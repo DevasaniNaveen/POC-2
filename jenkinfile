@@ -5,8 +5,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                sh 'echo passed'
-                //git 'https://github.com/DevasaniNaveen/project-2-cicd.git'
+                git 'https://github.com/DevasaniNaveen/POC-2.git'
             }
         }
 
