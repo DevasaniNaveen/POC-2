@@ -17,4 +17,5 @@ pipeline {
 
         stage('Deploy with Ansible') {
             steps {
-                ansiblePlaybook credentialsId: 'ansible-ssh-key',
+                ansiblePlaybook inventory: 'localhost',
+                playbook: 'ansible/deploy.yml'
