@@ -1,0 +1,20 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Code') {
+            steps {
+                git 'https://github.com/your-username/project-2-cicd.git'
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                echo 'Running build and test steps...'
+            }
+        }
+
+        stage('Deploy with Ansible') {
+            steps {
+                ansiblePlaybook credentialsId: 'ansible-ssh-key',
