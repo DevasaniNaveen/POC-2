@@ -1,0 +1,11 @@
+- name: Deploy WAR to Tomcat
+  hosts: tomcat_servers
+  become: yes
+  tasks:
+    - name: Copy WAR file
+      copy:
+        src: /var/lib/jenkins/workspace/POC/target/app.war
+        dest: /opt/apache-tomcat-9.0.65/webapps/app.war
+
+    - name: Restart Tomcat
+      shell: /opt/apache-tomcat-9.0.65/bin/shutdown.sh; sleep 5; /opt/apache-tomcat-9.0.65/bin/startup.sh
