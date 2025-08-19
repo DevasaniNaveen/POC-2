@@ -1,7 +1,8 @@
 
 - hosts: localhost
+  connection: local
   tasks:
-    - name: Copy JSP file to Tomcat
+    - name: Deploy app
       copy:
         src: ../src/index.jsp
-        dest: /opt/tomcat/webapps/ROOT/index.jsp
+        dest: /opt/tomcat/webapps/app/index.jsp
