@@ -1,0 +1,21 @@
+- name: Setup Tomcat Server
+  hosts: tomcat_servers
+  become: yes
+  tasks:
+    - name: Install Java
+      apt:
+        name: openjdk-11-jdk
+        state: present
+
+    - name: Download and extract Tomcat
+      unarchive:
+        src: https://downloads.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz
+        dest: /opt/
+        remote_src: yes
+        creates: /opt/apache-tomcat-9.0.65
+
+    - name: Set permissions
+      file:
+        path: /opt/apache-tomcat-9.0.65
+        state: directory
+        mode: '0755'
